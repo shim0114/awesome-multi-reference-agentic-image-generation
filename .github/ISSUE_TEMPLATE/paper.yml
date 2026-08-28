@@ -1,0 +1,43 @@
+name: Add a paper
+description: Suggest a paper for the reading list
+title: "[Paper] "
+labels:
+  - paper
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Paper title
+      placeholder: Exact title from the paper
+    validations:
+      required: true
+  - type: input
+    id: paper
+    attributes:
+      label: Primary paper URL
+      placeholder: https://arxiv.org/abs/...
+    validations:
+      required: true
+  - type: dropdown
+    id: track
+    attributes:
+      label: Track
+      options:
+        - Multi-reference image generation
+        - Agentic image generation
+        - Direct intersection
+        - Foundation / adjacent bridge
+    validations:
+      required: true
+  - type: input
+    id: resources
+    attributes:
+      label: Official project or code URL
+      placeholder: https://github.com/author/project
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Why it belongs
+      description: Briefly explain how it satisfies the selected track.
+    validations:
+      required: true
