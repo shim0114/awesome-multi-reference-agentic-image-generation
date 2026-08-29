@@ -1,0 +1,39 @@
+name: Correct or remove an entry
+description: Report incorrect metadata, a broken link, a duplicate, or an out-of-scope paper
+title: "[Correction] "
+labels:
+  - correction
+body:
+  - type: input
+    id: paper
+    attributes:
+      label: Paper or entry
+      placeholder: Exact title or repository link to the entry
+    validations:
+      required: true
+  - type: dropdown
+    id: correction_type
+    attributes:
+      label: Correction type
+      options:
+        - Incorrect title, date, venue, or status
+        - Broken or unofficial resource link
+        - Duplicate or renamed paper
+        - Wrong category or relevance claim
+        - Remove an out-of-scope entry
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: Explain what should change and why.
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: Primary evidence
+      placeholder: Official proceedings, OpenReview, arXiv, project, or author repository URL
+    validations:
+      required: true

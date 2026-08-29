@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contribution guide
+    url: https://github.com/zsyverse/awesome-multi-reference-agentic-image-generation/blob/main/CONTRIBUTING.md
+    about: Read the scope, metadata, and ordering rules before submitting.

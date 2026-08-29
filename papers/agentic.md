@@ -1,8 +1,20 @@
 # Agentic Image Generation
 
+[← Main list](../README.md) · [Multi-reference generation](multi-reference.md) ·
+[Direct intersection](intersection.md) · [Contributing](../CONTRIBUTING.md)
+
 > A high-precision bibliography of systems that use LLM/VLM agents to plan, call tools, generate, critique, refine, edit, or collaborate on **still-image generation**.
 
 Last checked: **2026-08-29**. Entries are sorted newest first within each section.
+
+## Contents
+
+- [Scope and curation policy](#scope-and-curation-policy)
+- [Direct agentic image generation](#direct-agentic-image-generation)
+  - [2026](#2026)
+  - [2025](#2025)
+  - [2024 and earlier](#2024-and-earlier)
+- [Adjacent and enabling work](#adjacent--enabling-work)
 
 ## Scope and curation policy
 
@@ -125,17 +137,8 @@ These papers are useful for building agentic generators, but the primary contrib
 | [Visual ChatGPT: Talking, Drawing and Editing with Visual Foundation Models](https://arxiv.org/abs/2303.04671) | Technical report, 2023 | Early ChatGPT-orchestrated visual tool system supporting generation, editing, feedback, and correction; broader than agentic T2I. | ✅ [Code](https://github.com/microsoft/visual-chatgpt) |
 | [Optimizing Prompts for Text-to-Image Generation](https://arxiv.org/abs/2212.09611) | NeurIPS 2023 | Promptist learns model-preferred prompt rewriting with supervised learning and RL; no planning, tools, memory, or visual self-correction at inference. | ✅ [Code / checkpoints](https://github.com/microsoft/LMOps/tree/main/promptist) |
 
-## Explicit exclusions
+## Maintenance
 
-- **Pure evaluation** (for example, agentic evaluators that never control generation) is not included.
-- **Image restoration / super-resolution / enhancement agents** are not included unless the method orchestrates generative image editing toward a user request.
-- **Video, animation, 3D scene, embodied-agent, and autonomous-driving world-model papers** are excluded unless still-image generation is a primary evaluated output.
-- **Ordinary unified multimodal generators or diffusion models** are excluded when “reasoning” is only an internal architecture claim and there is no agent policy, tool use, iterative action loop, or explicit multi-agent collaboration.
-- **Jailbreak/red-team systems** that use agents only to attack T2I safety filters are excluded from the generation bibliography.
-
-## Maintenance notes
-
-1. Prefer the accepted proceedings page over arXiv when one exists, while retaining the arXiv link for version history.
-2. Do not infer a venue from a personal bibliography, Papers with Code, or a search snippet. If only an official repository claims a venue, label that fact explicitly.
-3. Treat renamed papers as one record. In particular, arXiv:2401.10061 changed from **DiffusionGPT** (v1) to **DiffusionAgent** (v2); it must not appear twice.
-4. A repository named after a paper is not enough. Link code only when the paper/project page links it or its README identifies itself as the official implementation.
+Additions, exclusions, renamed-paper handling, and artifact verification follow
+the shared [contribution guide](../CONTRIBUTING.md) and
+[maintenance checklist](../.github/MAINTAINING.md).

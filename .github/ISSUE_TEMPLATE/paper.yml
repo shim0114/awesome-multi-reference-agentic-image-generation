@@ -18,6 +18,14 @@ body:
       placeholder: https://arxiv.org/abs/...
     validations:
       required: true
+  - type: input
+    id: publication
+    attributes:
+      label: Date and venue / status
+      description: Use YYYY-MM and an exact venue, arXiv preprint, or under review.
+      placeholder: 2026-08 · arXiv preprint
+    validations:
+      required: true
   - type: dropdown
     id: track
     attributes:
@@ -33,7 +41,8 @@ body:
     id: resources
     attributes:
       label: Official project or code URL
-      placeholder: https://github.com/author/project
+      description: Include only author- or organization-maintained artifacts.
+      placeholder: "Project: https://... · Code: https://github.com/author/project"
   - type: textarea
     id: relevance
     attributes:
@@ -41,3 +50,18 @@ body:
       description: Briefly explain how it satisfies the selected track.
     validations:
       required: true
+  - type: textarea
+    id: intersection_evidence
+    attributes:
+      label: Intersection evidence
+      description: Required only for Direct intersection. State separate evidence for the multi-reference and agentic axes.
+      placeholder: "Multi-reference: ...\nAgentic: ..."
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I searched the repository for duplicate titles, aliases, and identifiers.
+          required: true
+        - label: The title, venue/status, and artifact links come from primary or official sources.
+          required: true

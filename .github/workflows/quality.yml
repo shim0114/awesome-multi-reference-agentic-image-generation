@@ -1,0 +1,41 @@
+name: Collection quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-and-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+
+      - name: Lint Markdown
+        run: >-
+          npx --yes markdownlint-cli2@0.23.2
+          README.md CONTRIBUTING.md
+          'papers/*.md' 'docs/*.md' '.github/*.md'
+
+      - name: Reject duplicate arXiv IDs within an index
+        shell: bash
+        run: |
+          failed=0
+          for paper_file in papers/*.md; do
+            duplicates=$(rg -o 'arxiv.org/abs/[0-9]{4}\.[0-9]{5}' "$paper_file" | sort | uniq -d)
+            if [[ -n "$duplicates" ]]; then
+              printf 'Duplicate arXiv IDs in %s:\n%s\n' "$paper_file" "$duplicates"
+              failed=1
+            fi
+          done
+          exit "$failed"

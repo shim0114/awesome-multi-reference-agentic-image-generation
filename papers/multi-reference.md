@@ -1,9 +1,23 @@
 # Multi-Reference Image Generation
 
+[← Main list](../README.md) · [Agentic generation](agentic.md) ·
+[Direct intersection](intersection.md) · [Contributing](../CONTRIBUTING.md)
+
 > A curated bibliography of image-generation methods that consume **multiple visual references**: multiple subjects or identities, multiple personalized concepts, content–style/reference composition, and interleaved multimodal context.
 
 **Last verified:** 2026-08-29  
-**Coverage:** 71 in-scope papers (including 6 dedicated benchmark/dataset papers), plus 4 clearly separated background papers.
+**Coverage:** in-scope methods, dedicated benchmarks/datasets, and clearly
+separated background foundations.
+
+## Contents
+
+- [Scope and verification policy](#scope-and-verification-policy)
+- [Native multi-reference and interleaved context](#1-native-multi-reference-and-interleaved-context-generation)
+- [Multi-subject and multi-identity personalization](#2-multi-subject-and-multi-identity-personalization)
+- [Multi-concept and content–style composition](#3-multi-concept-and-contentstyle-composition)
+- [Multiple-image aggregation](#4-multiple-image-aggregation-for-one-identity-or-concept)
+- [Benchmarks and datasets](#5-dedicated-benchmarks-and-datasets)
+- [Background foundations](#6-background-foundations--not-counted-as-direct-multi-reference-papers)
 
 ## Scope and verification policy
 
@@ -176,8 +190,8 @@ These papers are important building blocks, but their primary problem setting is
 - **DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation** — *CVPR 2023* · [paper: CVF Open Access](https://openaccess.thecvf.com/content/CVPR2023/html/Ruiz_DreamBooth_Fine_Tuning_Text-to-Image_Diffusion_Models_for_Subject-Driven_Generation_CVPR_2023_paper.html) · [paper: arXiv:2208.12242](https://arxiv.org/abs/2208.12242) · [project](https://dreambooth.github.io/) 🧩 — Established few-image subject-driven diffusion fine-tuning, the baseline from which much multi-subject personalization evolved.
 - **An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion** — *ICLR 2023* · [paper: OpenReview 3L2mUQ2pf0](https://openreview.net/forum?id=3L2mUQ2pf0) · [paper: arXiv:2208.01618](https://arxiv.org/abs/2208.01618) · [code](https://github.com/rinongal/textual_inversion) ✅ — Introduced learned placeholder tokens for visual concepts, a foundation for later multi-token and multi-concept composition.
 
-## Maintenance notes
+## Maintenance
 
-- Prefer a formal proceedings record over author-claimed acceptance once one becomes available.
-- Do not promote a repository from 🧩 to ✅ unless it contains runnable implementation/model/data rather than only a README or project-page assets.
-- For new additions, verify the exact title and identifier on a primary paper page, then verify that project/code links are controlled by the authors or their organization.
+Additions and corrections follow the shared
+[contribution guide](../CONTRIBUTING.md) and
+[maintenance checklist](../.github/MAINTAINING.md).

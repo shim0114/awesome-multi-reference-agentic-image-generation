@@ -1,8 +1,20 @@
 # Multi-Reference × Agentic Image Generation
 
+[← Main list](../README.md) · [Multi-reference generation](multi-reference.md) ·
+[Agentic generation](agentic.md) · [Contributing](../CONTRIBUTING.md)
+
 > Papers at the intersection of **multiple visual references / multi-subject conditioning** and **agentic still-image generation**.
 
 Last checked: **2026-08-29**. Only primary sources are linked: official proceedings, arXiv/OpenReview, author project pages, and author-maintained repositories.
+
+## Contents
+
+- [Scope and counting rules](#scope-and-counting-rules)
+- [Direct intersection](#direct-intersection)
+  - [2026](#2026)
+  - [2025](#2025)
+  - [2024](#2024)
+- [Adjacent bridges](#adjacent-bridges)
 
 ## Scope and counting rules
 
@@ -14,7 +26,13 @@ This is intentionally stricter than taking the union of the two neighboring lite
 - **Benchmarks.** A benchmark belongs in the direct list only if it explicitly introduces or evaluates agentic methods on multi-reference inputs. It is labeled **benchmark evidence**, not treated as a new generation method.
 - **Versions and aliases.** Renamed, extended, or submission versions are one record unless they introduce a materially different method. In particular, **IA-T2I / Search-T2I is one lineage and one adjacent entry**, not two papers.
 
-Under these rules, the checked corpus contains **27 direct records: 25 systems/method papers and 2 benchmark papers**. The intersection is no longer empty, but it remains much smaller than either parent field; much of its recent growth comes from 2026 search-augmented agents and story-generation systems. Some direct entries support arbitrary user-supplied reference sets, while others meet Axis A through a narrower multi-character, multi-concept, retrieved-reference-set, or visual-memory setting; those distinctions are stated row by row.
+Under these rules, the direct list contains both systems/method papers and
+clearly labeled benchmark evidence. The intersection remains much smaller than
+either parent field; much of its recent growth comes from search-augmented
+agents and story-generation systems. Some entries support arbitrary
+user-supplied reference sets, while others meet Axis A through a narrower
+multi-character, multi-concept, retrieved-reference-set, or visual-memory
+setting; those distinctions are stated row by row.
 
 ### Code legend
 
@@ -53,7 +71,7 @@ Under these rules, the checked corpus contains **27 direct records: 25 systems/m
 | [Audit & Repair: An Agentic Framework for Consistent Story Visualization in Text-to-Image Diffusion Models](https://arxiv.org/abs/2506.18900) | arXiv preprint, 2025 | Builds a combined multi-character reference and reasons over the complete multi-panel image set; this is multi-subject conditioning, not arbitrary separate user references. | Story Initialization, Audit, Repair, and Consistency Director agents repeatedly inspect and locally repair identity/continuity defects. | 🟡 [Project](https://auditandrepair.github.io/) says code is coming soon. |
 | [LayerCraft: Enhancing Text-to-Image Generation with CoT Reasoning and Layered Object Integration](https://papers.nips.cc/paper_files/paper/2025/file/bf2a5ce85aea9ff40d9bf8b2c2561cae-Paper-Conference.pdf) | NeurIPS 2025 | Its object-integration node conditions on reference objects, masked backgrounds, and successive intermediate images to compose several grounded objects. | Coordinator, ChainArchitect, and object-integration agents plan layers, execute tools, check constraints, and integrate results. | ✅ [Code](https://github.com/PeterYYZhang/LayerCraft) |
 | [AgentStory: A Multi-Agent System for Story Visualization with Multi-Subject Consistent Text-to-Image Generation](https://doi.org/10.1145/3731715.3733271) | ACM ICMR 2025 | Demonstrates multi-subject generation from two subject reference images and masks through its FGCR adapter. | A multi-agent story-visualization pipeline coordinates narrative understanding, scene planning, and consistent generation. | 🟡 [Code](https://github.com/tc2000731/AgentStory) releases the adapter/components, not a clearly complete end-to-end system. |
-| [Storybooth: Training-Free Multi-Subject Consistency for Improved Visual Storytelling](https://openreview.net/pdf?id=JZLon6cvx8) | ICLR 2025 | Explicitly targets training-free multi-character/multi-subject identity consistency across a story. | Uses multimodal chain-of-thought reasoning, spatial storyboard planning, and region-wise generation rather than direct one-shot prompting. | ⬜ |
+| [Storybooth: Training-free Multi-Subject Consistency for Improved Visual Storytelling](https://arxiv.org/abs/2504.05800) | ICLR 2025 | Explicitly targets training-free multi-character/multi-subject identity consistency across a story. | Uses multimodal chain-of-thought reasoning, spatial storyboard planning, and region-wise generation rather than direct one-shot prompting. | ⬜ |
 | [VisAgent: Narrative-Preserving Story Visualization Framework](https://arxiv.org/abs/2503.02399) | ICASSP 2025 | Combines foreground character images, backgrounds, and stitched scene references; supports scenes with multiple recurring characters. | Story and image agents use an LMM locator plus automatic/user reflection to plan, place, inspect, and revise story frames. | ⬜ |
 | [AutoStory: Generating Diverse Storytelling Images with Minimal Human Efforts](https://doi.org/10.1007/s11263-024-02309-y) | International Journal of Computer Vision, 2025 | Learns per-character ED-LoRAs and fuses multiple characters/reference poses into final scenes. | An LLM automates character extraction, scene and layout planning, prompt construction, and the end-to-end storytelling workflow. | ✅ [Project](https://aim-uofa.github.io/AutoStory/) · [Code](https://github.com/aim-uofa/AutoStory) |
 
@@ -86,34 +104,9 @@ These works are valuable for joining the two fields, but the checked paper makes
 | [GenArtist: Multimodal LLM as an Agent for Unified Image Generation and Editing](https://arxiv.org/abs/2407.05600) | NeurIPS 2024 Spotlight | **Axis B:** an MLLM builds a tree-structured tool plan and performs stepwise verification/self-correction. | It is a general generation/editing agent; the paper does not make multi-reference conditioning a supported or evaluated core setting. | ✅ [Project](https://zhenyuw16.github.io/GenArtist_page/) · [Code](https://github.com/zhenyuw16/GenArtist) |
 | [MUSES: 3D-Controllable Image Generation via Multi-Modal Agent Collaboration](https://ojs.aaai.org/index.php/AAAI/article/view/32280) | AAAI 2025 | **Axis B:** multimodal agents collaborate to infer and enforce 3D-aware controls. | Its complex scenes are text/control-driven rather than conditioned on multiple visual identities or reference images. | ✅ [Code](https://github.com/DINGYANB/MUSES) |
 
-## Common exclusion traps
+## Maintenance
 
-- **Many objects are not many references.** A complex prompt, layout, segmentation map, or list of entities does not satisfy Axis A unless visual identity/appearance information comes from several images, concepts, subjects, or a multi-entity visual memory.
-- **Many candidates are not many references.** Best-of-*N* samples judged by a VLM do not count unless several visual inputs actually condition a subsequent synthesis step.
-- **Multi-image output is not multi-reference input.** A system that makes a sequence or grid from text alone needs explicit visual carry-over, identities, concepts, or reference-set conditioning.
-- **Iteration is not automatically agentic.** Fixed diffusion steps, autoregression, attention recurrence, and a predetermined enhancement pipeline do not satisfy Axis B without a reasoning/controller decision.
-- **An MLLM encoder is not automatically an agent.** There must be explicit planning, action/tool choice, memory use, critique/repair, or multi-agent coordination.
-- **Multiple versions are not multiple papers.** Titles, venue submissions, and later arXiv revisions should be merged when the underlying method is the same.
-
-## Search queries for future updates
-
-Run these against arXiv, OpenReview, CVF, ACL Anthology, ACM DL, and author repositories; then re-check both axes in the paper rather than relying on the title.
-
-1. `("multi-reference" OR "multiple reference images") (agent OR agentic OR planner) "image generation"`
-2. `("multi-subject" OR "multi-identity" OR "multi-character") (LLM OR MLLM OR VLM) (plan OR critique OR repair) generation`
-3. `("reference image set" OR "visual evidence set") (search agent OR retrieval agent) image synthesis`
-4. `("image generation agent" OR "image agent") (reference selection OR reference routing OR multi-reference)`
-5. `("visual memory" OR "character sheet") (multi-agent OR planner OR verifier) story visualization`
-6. `("multi-concept customization" OR "subject-driven generation") (tool use OR self-correction OR agent)`
-7. `("iterative refinement" OR "audit and repair") (multiple images OR reference identities) diffusion`
-8. `("agentic search" OR "active image search") (top-k images OR reference set) generator`
-9. `("multi-reference benchmark" OR "multi-image conditioning benchmark") agentic baseline`
-10. `site:github.com (multi-reference OR multi-subject) (agentic OR planner) image generation paper`
-
-## Maintenance checklist
-
-1. Prefer an accepted proceedings record over arXiv for venue claims; retain arXiv when it is the only primary paper page.
-2. Confirm the exact paper title and year from proceedings/arXiv metadata, not an aggregator.
-3. Record **separate evidence for Axis A and Axis B** before promoting an adjacent paper.
-4. Open the official repository: distinguish complete implementations from README-only, demo-only, component-only, and “coming soon” releases.
-5. Search by arXiv identifier and author list before adding a renamed version; merge aliases into the existing record.
+Intersection decisions continue to require separate evidence for both axes.
+Additions and corrections follow the shared
+[contribution guide](../CONTRIBUTING.md) and
+[maintenance checklist](../.github/MAINTAINING.md).
