@@ -32,7 +32,7 @@ jobs:
         run: |
           failed=0
           for paper_file in papers/*.md; do
-            duplicates=$(rg -o 'arxiv.org/abs/[0-9]{4}\.[0-9]{5}' "$paper_file" | sort | uniq -d)
+            duplicates=$(grep -Eo 'arxiv.org/abs/[0-9]{4}\.[0-9]{5}' "$paper_file" | sort | uniq -d)
             if [[ -n "$duplicates" ]]; then
               printf 'Duplicate arXiv IDs in %s:\n%s\n' "$paper_file" "$duplicates"
               failed=1
